@@ -1,4 +1,5 @@
 #include <stdio.h>
+#include <stdbool.h>
 
 int stringLen(char string[]){
     int count = 0;
@@ -22,9 +23,21 @@ void stringConcat(char string1[], char string2[], char result[]){
     result[index] = '\0';
 }
 
+bool stringCompare(char string1[], char string2[]){
+    int index = 0;
+    while (string1[index] != '\0' && string2[index] != '\0'){
+        if (string1[index] != string2[index]){
+            return false;
+        }
+        index++;
+    }
+    return true;
+}
+
 int main(){
     char word[] = "hello ";
     char word2[] = "world";
+    char word3[] = "hello ";
     char result[stringLen(word) + stringLen(word2) + 1];
     
     printf("%d\n", stringLen(word));
@@ -32,5 +45,12 @@ int main(){
     stringConcat(word, word2, result);
 
     printf("Concatenated string: %s\n", result);
+
+    bool result1 = stringCompare(word, word2);
+
+    bool result2 = stringCompare(word, word3);
+
+    printf("%d\n%d\n", result1, result2);
+
     return 0;
 }
