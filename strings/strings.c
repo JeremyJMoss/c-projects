@@ -24,8 +24,11 @@ void stringConcat(char string1[], char string2[], char result[]){
 }
 
 bool stringCompare(char string1[], char string2[]){
+    if (stringLen(string1) != stringLen(string2)){
+        return false;
+    }
     int index = 0;
-    while (string1[index] != '\0' && string2[index] != '\0'){
+    while (string1[index] != '\0' || string2[index] != '\0'){
         if (string1[index] != string2[index]){
             return false;
         }
